@@ -932,7 +932,7 @@
       // CARRINHO
       let cart = [];
       function addToCart(product) {
-        const existingItem = cart.find((item) => item.id === product.id);
+        const existingItem = cart.find((item) => item._id === product._id);
         if (existingItem) {
           existingItem.quantity++;
         } else {
@@ -942,7 +942,7 @@
       }
 
       function removeFromCart(productId) {
-        cart = cart.filter((item) => item.id !== productId);
+        cart = cart.filter((item) => item._id !== productId);
         loadCart();
         updateCartCount();
       }
@@ -977,9 +977,9 @@
                   <p style="color: #8B7355; font-weight: bold;">R$ ${itemTotal.toLocaleString(
                     "pt-BR"
                   )}</p>
-                  <button class="btn-remove" onclick="removeFromCart(${
-                    item.id
-                  })">Remover</button>
+                 <button class="btn-remove" onclick="removeFromCart('${
+                   item._id
+                 }')">Remover</button>
               </div>`;
           cartItemsEl.appendChild(cartItem);
         });
